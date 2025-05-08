@@ -1,0 +1,13 @@
+package com.edge;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EdgeProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EdgeProjectApplication.class, args);
+	}
+
+}
