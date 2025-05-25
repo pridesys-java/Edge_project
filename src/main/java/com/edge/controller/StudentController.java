@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.edge.service.StudentService;
 
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class StudentController {
 	@Autowired
@@ -28,6 +30,12 @@ public class StudentController {
 	public Optional<Student> addStudent( @Valid @RequestBody Student stu) {
 		service.addStudent(stu);
 		return service.getById(stu.getId());
+	}
+	
+	@PostMapping("/remove-student")
+	public String removeStudent(@RequestBody Student stu) {
+		service.removeStudent(stu);
+		return stu.getName()+","+stu.getAge()+" has deleted.";
 	}
 	
 	@GetMapping("/test")
